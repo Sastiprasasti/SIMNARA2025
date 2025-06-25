@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'name' => 'Umum 3205',
-                'email' => 'umum3205@gmail.com',
+                'email' => 'sastiprasasti01@gmail.com',
                 'password' => 'garutkab3205'
             ],
             [

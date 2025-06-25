@@ -40,7 +40,7 @@
                         <option value="" disabled selected>Pilih disposisi</option>
                         <option value="Tidak Disposisi">Tidak Disposisi</option>
                         <option value="IPDS">Tim IPDS</option>
-                        <option value="TU">TU</option>
+                        <option value="TU">TU (Umum)</option>
                         <option value="Kepala Kantor">Kepala Kantor</option>
                         <option value="Neraca">Neraca</option>
                         <option value="Sosial">Sosial</option>
@@ -73,6 +73,7 @@
                             <th>Nomor Surat</th>
                             <th>Nama Pengirim</th>
                             <th>Perihal</th>
+                            <th>Status Disposisi</th>
                             <th>PDF</th>
                         </tr>
                     </thead>
@@ -84,6 +85,15 @@
                             <td>{{ $surat->nomor_surat }}</td>
                             <td>{{ $surat->nama_pengirim }}</td>
                             <td>{{ $surat->perihal }}</td>
+                            <td>
+                                @if($surat->status_disposisi === 'Disetujui')
+                                    <span class="badge bg-success">Disetujui</span>
+                                @elseif($surat->status_disposisi === 'Ditolak')
+                                    <span class="badge bg-danger">Ditolak</span>
+                                @else
+                                    <span class="badge bg-warning">Menunggu</span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ Storage::url('surat_masuk/' . $surat->file_path) }}"
                                     class="btn btn-sm btn-primary"

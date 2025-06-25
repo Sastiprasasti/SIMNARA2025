@@ -14,13 +14,15 @@ class DisposisiSurat extends Mailable
     public $nomorSurat;
     public $pengirim;
     public $perihal;
+    public $token;
 
-    public function __construct($penerima, $nomorSurat, $pengirim, $perihal)
+    public function __construct($penerima, $nomorSurat, $pengirim, $perihal, $token)
     {
         $this->penerima = $penerima;
         $this->nomorSurat = $nomorSurat;
         $this->pengirim = $pengirim;
         $this->perihal = $perihal;
+        $this->token = $token;
     }
 
     public function build()

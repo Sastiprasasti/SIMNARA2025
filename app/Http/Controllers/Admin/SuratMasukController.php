@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\DisposisiSurat;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Str;
 
 
 class SuratMasukController extends Controller
@@ -34,8 +34,16 @@ class SuratMasukController extends Controller
                 $validated['file_path'] = $filename;
             }
 
+            // **Generate token + set status sebelum simpan**
+            $validated['disposisi_token'] = (string) Str::uuid();
+            // $token = $validated['disposisi_token'];
+            $validated['status_disposisi']  = 'Menunggu';
+
             // Simpan ke DB
             $surat = SuratMasuk::create($validated);
+            $token = $surat->disposisi_token;
+
+
 
             // Email tujuan berdasarkan disposisi
             $disposisi = $request->input('disposisi');
@@ -49,12 +57,15 @@ class SuratMasukController extends Controller
                 "Produksi" => "produksi@example.com"
             ];
 
+
             if ($disposisi !== 'Tidak Disposisi' && isset($emailMap[$disposisi])) {
+
                 Mail::to($emailMap[$disposisi])->send(new DisposisiSurat(
                     strtoupper($disposisi),
                     $request->nomor_surat,
                     $request->nama_pengirim,
-                    $request->perihal
+                    $request->perihal,
+                    $token
                 ));
             }
 
@@ -64,64 +75,6 @@ class SuratMasukController extends Controller
             return back()->with('error', 'Gagal menambahkan surat masuk: ' . $e->getMessage());
         }
     }
-
-    // public function store(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'nomor_surat' => 'required|string|max:255',
-    //         'tanggal' => 'required|date',
-    //         'nama_pengirim' => 'required|string|max:255',
-    //         'tujuan' => 'required|string',
-    //         'file_pdf' => 'required|mimes:pdf|max:2048'
-    //     ]);
-
-    //     $surat = SuratMasuk::create($request->all());
-
-    //     try {
-    //         if ($request->hasFile('file_pdf')) {
-    //             $file = $request->file('file_pdf');
-    //             $filename = time() . '_' . $file->getClientOriginalName();
-    //             $file->storeAs('public/surat_masuk', $filename);
-    //             $validated['file_path'] = $filename;
-    //         }
-
-    //         SuratMasuk::create($validated);
-
-
-    //         $disposisi = $request->input('disposisi');
-    //         $emailMap = [
-    //             "IPDS" => "ipds3205@bps.go.id",
-    //             "TU" => "sastiprasasti01@gmail.com",
-    //             "Kepala Kantor" => "nevihendri@bps.go.id",
-    //             "Neraca" => "neraca@example.com",
-    //             "Sosial" => "sosial@example.com",
-    //             "Distribusi" => "distribusi@example.com",
-    //             "Produksi" => "produksi@example.com"
-    //         ];
-
-    //         if (!isset($emailMap[$disposisi])) {
-    //             return back()->with('error', 'Disposisi tidak valid.');
-    //         }
-
-    //         Mail::to($emailMap[$disposisi])->send(new DisposisiSurat(
-
-    //             strtoupper($disposisi),
-    //             $request->nomor_surat,
-    //             $request->nama_pengirim,
-    //             $request->tujuan
-    //         ));
-    //         return redirect()->route('admin.surat-masuk')
-    //             ->with('success', 'Surat masuk berhasil ditambahkan dan email disposisi dikirim');
-
-    //         // return back()->with('success', 'Surat masuk berhasil ditambahkan dan Email disposisi dikirim!');
-    //         // return redirect()->route('admin.surat-masuk')
-    //         // ->with('success', 'Surat masuk berhasil ditambahkan dan email disposisi dikirim');
-    //     } catch (\Exception $e) {
-    //         return back()->with('error', 'Gagal menambahkan surat masuk');
-    //     }
-    // }
-
-
 
 
     public function download(SuratMasuk $suratMasuk)

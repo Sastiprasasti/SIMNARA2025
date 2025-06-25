@@ -14,21 +14,25 @@
                         <img src="{{ asset('images/logo-bps.png') }}" alt="Logo BPS" class="bps-logo">
                     </div>
                     <div class="border-start border-white border-opacity-25 ps-4">
+                        <!-- Tambahkan margin-bottom kecil di sini -->
+                        <div style="font-size: 2.5rem; font-weight: 600; letter-spacing: 0; margin-bottom: -0.5rem;">
+                            <span style="color: #0056b3;">SIM</span><span style="color: #28a745;">NA</span><span style="color: #fd7e14;">RA</span>
+                        </div>
+                        <p class="mb-0 opacity-75" style="line-height: 1;">Sistem Manajemen Surat Keluar dan Surat Masuk</p>
                         <h4 class="fw-bold mb-1">Badan Pusat Statistik Kabupaten Garut</h4>
-                        <p class="mb-0 opacity-75">Dashboard Admin</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
-                <a href="{{ route('admin.dashboard') }}" class="btn btn-light btn-sm me-2 rounded-pill shadow-sm hover-lift">
+                <a href="{{ route('admin.dashboard') }}" class="btn btn-success btn-sm me-2 rounded-pill shadow-sm hover-lift">
                     <i class="fas fa-tachometer-alt me-1"></i> Dashboard
                 </a>
-                <a href="{{ route('admin.submissions.index') }}" class="btn btn-light btn-sm me-2 rounded-pill shadow-sm hover-lift">
+                <a href="{{ route('admin.submissions.index') }}" class="btn btn-warning btn-sm me-2 rounded-pill shadow-sm hover-lift">
                     <i class="fas fa-list me-1"></i> Submissions
                 </a>
                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
                     @csrf
-                    <button type="submit" class="btn btn-light btn-sm rounded-pill shadow-sm hover-lift">
+                    <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm hover-lift">
                         <i class="fas fa-sign-out-alt me-1"></i> Logout
                     </button>
                 </form>
@@ -39,6 +43,17 @@
     <div class="container">
         <!-- Stats Cards -->
         <div class="row g-4 mb-4">
+            
+            <div class="card-body p-4" style=" pointer-events: none;">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="btn btn-warning w-90 rounded py-3 shadow-sm no-hover">
+                            <p class="fas fa-user me-2 d-inline"></p> Dashboard Admin
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-3">
                 <div class="card border0 bg-gradient-purple text-white rounded-4 shadow-hover transform-hover">
                     <div class="card-body p-4">
@@ -147,7 +162,7 @@
         <div class="card border-0 rounded-4 shadow">
             <div class="card-header bg-white border-0 py-4">
                 <h5 class="mb-0 fw-bold">
-                    <i class="fas fa-bolt me-2 text-primary"></i>Quick Actions
+                    <i class="fas fa-bolt me-2 text-warning"></i>Quick Actions
                 </h5>
             </div>
             <div class="card-body p-4">

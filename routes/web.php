@@ -11,6 +11,8 @@ use App\Http\Controllers\PedomanController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SuratController;
+use App\Models\SuratMasuk;
+
 
 
 
@@ -127,4 +129,35 @@ Route::middleware(['auth', 'admin'])
 // Fallback route
 Route::fallback(function () {
     return redirect()->route('login');
+});
+
+Route::get('/approve-disposisi/{token}', [SuratMasukController::class, 'approveDisposisi']);
+
+//Approve Surat Masuk
+Route::get('/approve-disposisi/{token}', function ($token) {
+    $surat = SuratMasuk::where('disposisi_token', $token)->first();
+
+    if (!$surat) {
+        return abort(404, 'Token tidak ditemukan');
+    }
+
+    $surat->status_disposisi = 'Disetujui';
+    $surat->save();
+
+    return view('disposisi.approved'); // halaman konfirmasi
+});
+
+//Rejected Surat Masuk
+// Reject
+Route::get('/reject-disposisi/{token}', function ($token) {
+    $surat = \App\Models\SuratMasuk::where('disposisi_token', $token)->first();
+
+    if (!$surat) {
+        return abort(404, 'Token tidak ditemukan');
+    }
+
+    $surat->status_disposisi = 'Ditolak';
+    $surat->save();
+
+    return view('disposisi.rejected');
 });

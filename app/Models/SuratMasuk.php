@@ -15,7 +15,10 @@ class SuratMasuk extends Model
         'nama_pengirim',
         // 'tujuan',
         'perihal',
-        'file_path'
+        'file_path',
+        'disposisi',
+        'disposisi_token', // ← HARUS ADA
+        'status_disposisi'
     ];
 
     protected $casts = [

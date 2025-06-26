@@ -161,3 +161,13 @@ Route::get('/reject-disposisi/{token}', function ($token) {
 
     return view('disposisi.rejected');
 });
+
+Route::get('/debug-user', function () {
+    $user = \App\Models\User::where('email', 'admin3205@gmail.com')->first();
+
+    return [
+        'exists' => $user !== null,
+        'hashed_password' => $user?->password,
+        'check_password' => \Illuminate\Support\Facades\Hash::check('password', $user->password),
+    ];
+});

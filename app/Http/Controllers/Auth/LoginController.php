@@ -55,6 +55,8 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        // return redirect('/');
+
+        return redirect('/')->withCookie(cookie()->forget(config('session.cookie')));
     }
 }

@@ -166,9 +166,12 @@ Route::get('/reject-disposisi/{token}', function ($token) {
 });
 
 Route::get('/cek', function () {
-    $user = User::where('email', 'admin3205@gmail.com')->first();
+    $user = \App\Models\User::where('email', 'admin3205@gmail.com')->first();
+
     return [
-        'ada' => $user ? true : false,
-        'match' => $user ? Hash::check('password_asli', $user->password) : false,
+        'user_ditemukan' => $user ? true : false,
+        'hash_dari_db' => $user ? $user->password : null,
+        'hash_dari_local' => Hash::make('garutkab3205'),
+        'match' => $user ? Hash::check('garutkab3205', $user->password) : false,
     ];
 });

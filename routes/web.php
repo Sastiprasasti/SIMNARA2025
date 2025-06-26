@@ -24,7 +24,9 @@ Route::get('/test-login', function () {
 });
 
 
-
+Route::get('/check-auth', function () {
+    return Auth::check() ? 'Sudah login sebagai ' . Auth::user()->name : 'Belum login';
+});
 
 // Redirect root to login
 Route::get('/', function () {

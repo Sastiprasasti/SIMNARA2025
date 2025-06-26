@@ -1,1 +1,1 @@
-web: start-server.sh
+web: composer serve

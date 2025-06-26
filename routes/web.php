@@ -17,16 +17,16 @@ use App\Models\User;
 
 
 
-Route::get('/test-login', function () {
-    $user = User::where('email', 'admin3205@gmail.com')->first();
-    Auth::login($user);
-    return 'Login paksa berhasil sebagai: ' . Auth::user()->name;
-});
+// Route::get('/test-login', function () {
+//     $user = User::where('email', 'admin3205@gmail.com')->first();
+//     Auth::login($user);
+//     return 'Login paksa berhasil sebagai: ' . Auth::user()->name;
+// });
 
 
-Route::get('/check-auth', function () {
-    return Auth::check() ? 'Sudah login sebagai ' . Auth::user()->name : 'Belum login';
-});
+// Route::get('/check-auth', function () {
+//     return Auth::check() ? 'Sudah login sebagai ' . Auth::user()->name : 'Belum login';
+// });
 
 // Redirect root to login
 Route::get('/', function () {

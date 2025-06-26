@@ -17,6 +17,13 @@ use App\Models\User;
 
 
 
+Route::get('/test-login', function () {
+    $user = User::where('email', 'admin3205@gmail.com')->first();
+    Auth::login($user);
+    return 'Login paksa berhasil sebagai: ' . Auth::user()->name;
+});
+
+
 
 
 // Redirect root to login

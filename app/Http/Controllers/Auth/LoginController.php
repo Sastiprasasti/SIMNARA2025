@@ -23,8 +23,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-             \Log::info('Login berhasil, user: ' . json_encode(Auth::user()));
-             
+            dd('Login berhasil', Auth::user());
+
             if (auth()->user()->isAdmin()) {
                 return redirect()->route('admin.dashboard');
             }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -23,9 +25,18 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            dd('Login berhasil', Auth::user());
+            // dd('Login berhasil', Auth::user());
 
-            if (auth()->user()->isAdmin()) {
+            \Log::info('Login berhasil. Data user:', [
+                'email' => auth()->user()->email,
+                'role' => auth()->user()->role,
+                'is_admin' => auth()->user()->isAdmin(),
+            ]);
+
+            // if (auth()->user()->isAdmin()) {
+            //     return redirect()->route('admin.dashboard');
+            // }
+            if (auth()->user()->role === 'admin') {
                 return redirect()->route('admin.dashboard');
             }
 

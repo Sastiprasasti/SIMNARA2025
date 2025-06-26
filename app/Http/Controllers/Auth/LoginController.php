@@ -30,6 +30,8 @@ class LoginController extends Controller
             return redirect()->route('user.dashboard');
         }
 
+        \Log::warning('Login gagal: ' . $request->email);
+
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);

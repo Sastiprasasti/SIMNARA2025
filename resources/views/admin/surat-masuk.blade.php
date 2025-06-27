@@ -75,6 +75,7 @@
                             <th>Perihal</th>
                             <th>Status Disposisi</th>
                             <th>PDF</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>

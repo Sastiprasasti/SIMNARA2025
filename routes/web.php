@@ -120,6 +120,14 @@ Route::middleware(['auth', 'admin'])
             Route::post('/surat-masuk/kirim-disposisi', 'kirimDisposisi')->name('kirim.disposisi');
         });
 
+        Route::get('/surat-masuk/{id}/edit', [SuratMasukController::class, 'edit'])->name('surat-masuk.edit');
+        Route::put('/surat-masuk/{id}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
+
+        // Delete action
+        Route::delete('/surat-masuk/{id}', [SuratMasukController::class, 'destroy2'])->name('surat-masuk.destroy2');
+
+
+        // Edit form & update action
 
 
         // Submissions Management

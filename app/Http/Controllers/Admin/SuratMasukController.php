@@ -158,4 +158,41 @@ class SuratMasukController extends Controller
             'totalPDF'
         ));
     }
+
+    public function edit($id)
+    {
+        $surat = SuratMasuk::findOrFail($id);
+        return view('admin.surat_masuk.edit', compact('surat'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'nomor_surat' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'nama_pengirim' => 'required|string|max:255',
+            'perihal' => 'required|string',
+            'file_pdf' => 'required|mimes:pdf|max:2048',
+            'disposisi' => 'required|string',
+        ]);
+
+        $surat = SuratMasuk::findOrFail($id);
+        $surat->update($request->all());
+
+        return redirect()->route('admin.suratmasuk.index')->with('success', 'Surat berhasil diperbarui.');
+    }
+
+    public function destroy2($id)
+    {
+        $surat = SuratMasuk::findOrFail($id);
+
+        // Hapus file PDF jika ada
+        if ($surat->file_path && \Storage::exists('surat_masuk/' . $surat->file_path)) {
+            \Storage::delete('surat_masuk/' . $surat->file_path);
+        }
+
+        $surat->delete();
+
+        return redirect()->back()->with('success', 'Surat berhasil dihapus.');
+    }
 }

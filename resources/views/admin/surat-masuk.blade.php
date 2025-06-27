@@ -101,6 +101,15 @@
                                     <i class="fas fa-file-pdf"></i> Lihat
                                 </a>
                             </td>
+                            <td>
+                                <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-sm btn-warning">Edit</a>
+
+                                <form action="{{ route('surat-masuk.destroy', $surat->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         @empty
                         <tr>

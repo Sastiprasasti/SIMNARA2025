@@ -50,7 +50,7 @@
                                 <i class="fas fa-arrow-left me-1"></i>Kembali                             
                             </a>                             
                             <button type="submit" class="btn btn-success">                                 
-                                <i class="fas fa-paper-plane me-1"></i>Kirim Permohonan                             
+                                <i class="fas fa-paper-plane me-1"></i>Kirim                           
                             </button>                         
                         </div>                     
                     </form>                 

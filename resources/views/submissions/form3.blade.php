@@ -51,7 +51,7 @@
                                 <i class="fas fa-arrow-left me-1"></i>Kembali
                             </a>
                             <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-paper-plane me-1"></i>Kirim Pengaduan
+                                <i class="fas fa-paper-plane me-1"></i>Kirim
                             </button>
                         </div>
                     </form>

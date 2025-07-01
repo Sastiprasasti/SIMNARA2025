@@ -5,7 +5,7 @@
     <!-- Blue Header -->
     <div class="bg-primary text-white p-3 mb-4 rounded">
         <h4 class="mb-0">Surat Masuk</h4>
-        <small>Sistem Informasi Manajemen Surat</small>
+        <small>Sistem Manajemen Surat Keluar dan Surat Masuk (SIMNARA)</small>
     </div>
 
     <!-- Form Tambah Surat Masuk -->
@@ -51,6 +51,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Upload PDF</label>
+                    <small class="text-muted">Maks. ukuran file: 2MB</small>
                     <input type="file" name="file_pdf" class="form-control" accept=".pdf" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -114,7 +115,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6" class="text-center">Belum ada surat masuk</td>
+                            <td colspan="8" class="text-center">Belum ada surat masuk</td>
                         </tr>
                         @endforelse
                     </tbody>

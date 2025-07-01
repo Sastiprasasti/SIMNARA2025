@@ -167,7 +167,7 @@
     <div class="content-wrapper">
         <div class="top-header">
             <h4 class="mb-2">Surat Keluar</h4>
-            <div class="text-white-50">Sistem Informasi Manajemen Surat</div>
+            <div class="text-white-50">Sistem Manajemen Surat Keluar dan Surat Masuk (SIMNARA)</div>
         </div>
 
         <div class="container-fluid px-0">

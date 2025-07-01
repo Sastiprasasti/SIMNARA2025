@@ -51,8 +51,9 @@
 
                 <div class="mb-3">
                     <label class="form-label">Upload PDF</label>
-                    <small class="text-muted">Maks. ukuran file: 2MB</small>
+                    
                     <input type="file" name="file_pdf" class="form-control" accept=".pdf" required>
+                    <small class="text-muted">Maks. ukuran file: 2MB</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>

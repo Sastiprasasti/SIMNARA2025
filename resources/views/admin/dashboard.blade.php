@@ -16,7 +16,7 @@
                     <div class="border-start border-white border-opacity-25 ps-4">
                         <!-- Tambahkan margin-bottom kecil di sini -->
                         <div style="font-size: 2.5rem; font-weight: 600; letter-spacing: 0; margin-bottom: -0.5rem;">
-                            <span style="color: #0056b3;">SIM</span><span style="color: #28a745;">NA</span><span style="color: #fd7e14;">RA</span>
+                            <span style="color: #0056b3;">SU</span><span style="color: #28a745;">RAT</span><span style="color: #fd7e14;">KU</span>
                         </div>
                         <p class="mb-0 opacity-75" style="line-height: 1;">Sistem Manajemen Surat Keluar dan Surat Masuk</p>
                         <h4 class="fw-bold mb-1">Badan Pusat Statistik Kabupaten Garut</h4>

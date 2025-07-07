@@ -105,7 +105,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ route('admin.surat-masuk.edit', $surat->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
                                 <form action="{{ route('admin.surat-masuk.destroy', $surat->id) }}"
                                     method="POST"

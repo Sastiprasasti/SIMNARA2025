@@ -124,7 +124,7 @@ Route::middleware(['auth', 'admin'])
         Route::put('/surat-masuk/{id}', [SuratMasukController::class, 'update'])->name('surat-masuk.update');
 
         // Delete action
-        Route::delete('/surat-masuk/{id}', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
+        // Route::delete('/surat-masuk/{id}', [SuratMasukController::class, 'destroy'])->name('surat-masuk.destroy');
 
 
         // Edit form & update action

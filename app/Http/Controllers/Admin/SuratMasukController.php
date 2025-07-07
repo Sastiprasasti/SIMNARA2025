@@ -182,16 +182,14 @@ class SuratMasukController extends Controller
         return redirect()->route('admin.suratmasuk.index')->with('success', 'Surat berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    public function destroy(SuratMasuk $suratMasuk)
     {
-        $surat = SuratMasuk::findOrFail($id);
-
         // Hapus file PDF jika ada
-        if ($surat->file_path && \Storage::exists('surat_masuk/' . $surat->file_path)) {
-            \Storage::delete('surat_masuk/' . $surat->file_path);
+        if ($suratMasuk->file_path && \Storage::exists('public/surat_masuk/' . $suratMasuk->file_path)) {
+            \Storage::delete('public/surat_masuk/' . $suratMasuk->file_path);
         }
 
-        $surat->delete();
+        $suratMasuk->delete();
 
         return redirect()->back()->with('success', 'Surat berhasil dihapus.');
     }

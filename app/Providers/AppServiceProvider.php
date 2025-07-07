@@ -6,12 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
 
-Response::macro('noCache', function ($response) {
-    return $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-        ->header('Pragma', 'no-cache')
-        ->header('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
-});
-
 class AppServiceProvider extends ServiceProvider
 {
     /**

@@ -14,7 +14,8 @@
                         <img src="{{ asset('images/logo-bps.png') }}" alt="Logo BPS" class="bps-logo">
                     </div>
                     <div class="border-start border-white border-opacity-25 ps-4">
-                        <h2 class="display-6 fw-bold mb-1 typing-effect">Badan Pusat Statistik Kabupaten Garut</h2>
+                        <h2 class="display-6 fw-bold mb-1 typing-effect">Badan Pusat Statistik</h2>
+                        <h2 class="display-6 fw-bold mb-1 typing-effect">Kabupaten Garut</h2>
                         <p class="lead mb-0 opacity-75" style="animation-delay: 3.5s;">{{ Auth::user()->name }}</p>
                     </div>
                 </div>

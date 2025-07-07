@@ -95,19 +95,19 @@ class SuratMasukController extends Controller
         return response()->file(storage_path('app/public/surat_masuk/' . $suratMasuk->file_path));
     }
 
-    public function destroy(SuratMasuk $suratMasuk)
-    {
-        try {
-            if ($suratMasuk->file_path) {
-                Storage::delete('public/surat_masuk/' . $suratMasuk->file_path);
-            }
+    // public function destroy(SuratMasuk $suratMasuk)
+    // {
+    //     try {
+    //         if ($suratMasuk->file_path) {
+    //             Storage::delete('public/surat_masuk/' . $suratMasuk->file_path);
+    //         }
 
-            $suratMasuk->delete();
-            return back()->with('success', 'Surat masuk berhasil dihapus');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Gagal menghapus surat masuk');
-        }
-    }
+    //         $suratMasuk->delete();
+    //         return back()->with('success', 'Surat masuk berhasil dihapus');
+    //     } catch (\Exception $e) {
+    //         return back()->with('error', 'Gagal menghapus surat masuk');
+    //     }
+    // }
 
     public function bulkDestroy(Request $request)
     {
@@ -182,7 +182,7 @@ class SuratMasukController extends Controller
         return redirect()->route('admin.suratmasuk.index')->with('success', 'Surat berhasil diperbarui.');
     }
 
-    public function destroy2($id)
+    public function destroy($id)
     {
         $surat = SuratMasuk::findOrFail($id);
 

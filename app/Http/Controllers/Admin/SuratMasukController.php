@@ -162,7 +162,7 @@ class SuratMasukController extends Controller
     public function edit($id)
     {
         $surat = SuratMasuk::findOrFail($id);
-        return view('admin.submissions.edit', compact('surat'));
+        return view('admin.surat_masuk.edit', compact('surat'));
     }
 
     public function update(Request $request, $id)

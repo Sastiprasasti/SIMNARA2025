@@ -162,7 +162,7 @@ class SuratMasukController extends Controller
     public function edit($id)
     {
         $surat = SuratMasuk::findOrFail($id);
-        return view('admin.surat_masuk.edit', compact('surat'));
+        return view('admin.submissions.edit', compact('surat'));
     }
 
     public function update(Request $request, $id)
@@ -172,15 +172,32 @@ class SuratMasukController extends Controller
             'tanggal' => 'required|date',
             'nama_pengirim' => 'required|string|max:255',
             'perihal' => 'required|string',
-            'file_pdf' => 'required|mimes:pdf|max:2048',
             'disposisi' => 'required|string',
+            'file_pdf' => 'nullable|mimes:pdf|max:2048', // file bisa kosong
         ]);
 
         $surat = SuratMasuk::findOrFail($id);
-        $surat->update($request->all());
+        $data = $validated;
 
-        return redirect()->route('admin.suratmasuk.index')->with('success', 'Surat berhasil diperbarui.');
+        // Jika ada file baru diupload
+        if ($request->hasFile('file_pdf')) {
+            // Hapus file lama jika ada
+            if ($surat->file_path && Storage::exists('public/surat_masuk/' . $surat->file_path)) {
+                Storage::delete('public/surat_masuk/' . $surat->file_path);
+            }
+
+            $file = $request->file('file_pdf');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/surat_masuk', $filename);
+            $data['file_path'] = $filename;
+        }
+
+        $surat->update($data);
+
+        return redirect()->route('admin.surat-masuk')->with('success', 'Surat berhasil diperbarui.');
     }
+
+
 
     public function destroy(SuratMasuk $suratMasuk)
     {

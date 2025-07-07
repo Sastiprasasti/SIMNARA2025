@@ -5,7 +5,7 @@
     <!-- Blue Header -->
     <div class="bg-primary text-white p-3 mb-4 rounded">
         <h4 class="mb-0">Surat Masuk</h4>
-        <small>Sistem Manajemen Surat Keluar dan Surat Masuk (SIMNARA)</small>
+        <small>Sistem Manajemen Surat Keluar dan Surat Masuk (SURATKU)</small>
     </div>
 
     <!-- Form Tambah Surat Masuk -->
@@ -105,7 +105,7 @@
                                 </a>
                             </td>
                             <td>
-                                {{-- <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-sm btn-warning">Edit</a> --}}
+                                <a href="{{ route('surat-masuk.edit', $surat->id) }}" class="btn btn-sm btn-warning">Edit</a>
 
                                 <form action="{{ route('admin.surat-masuk.destroy', $surat->id) }}"
                                     method="POST"
